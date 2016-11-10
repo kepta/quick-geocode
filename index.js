@@ -37,12 +37,15 @@ $(function() {
   var url = API_BASE + 'text=' + query.name + '&' + getBboxQuery(bbox);
   var $tbody = $('#results tbody');
   $.getJSON(url, {}, function(data) {
+    $('#loading').hide();
     var features = data.features;
     features.forEach(function(feature) {
       var m = new MapzenResult(feature);
       var $row = m.getRow();
       $tbody.append($row);
     });
+  }).fail(function(err) {
+    alert('Geocode request failed. Please slap batpad.');
   });
 });
 
