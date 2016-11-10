@@ -1,5 +1,9 @@
 var MAPZEN_KEY = 'mapzen-vPFsTmz';
 var MAPZEN_API_BASE = 'https://search.mapzen.com/v1/search?';
+
+var OPENCAGE_KEY = 'b259e2552bcc6545f684920858777172';
+var OPENCAGE_API_BASE = 'https://api.opencagedata.com/geocode/v1/json';
+
 var citiesData = [
 {"city":"Bali","bbox_wsen":"114.84518601528924,-8.89719763214812,115.64444535372013,-8.479899063545815"}
 ,
@@ -34,6 +38,8 @@ $(function() {
     return;
   };
   var bbox = cities[query.city];
+
+  //FIXME: build params object, not this ugly url string concat
   var mzUrl = MAPZEN_API_BASE + 'text=' + query.name + '&' + getBboxQuery(bbox);
   var $mzBody = $('#mzResults tbody');
   $.getJSON(mzUrl, {}, function(data) {
@@ -46,6 +52,25 @@ $(function() {
     });
   }).fail(function(err) {
     alert('Mapzen geocode request failed. Please slap batpad.');
+  });
+
+  var ocParams = {
+    bounds: bbox,
+    key: OPENCAGE_KEY,
+    q: query.name
+  };
+  var $ocBody = $('#ocResults tbody');
+  $.getJSON(OPENCAGE_API_BASE, ocParams, function(data) {
+    $('#ocLoading').hide();
+    var results = data.results;
+    console.log(results);
+    results.forEach(function(result) {
+      var o = new OpencageResult(result);
+      var $row = o.getRow();
+      $ocBody.append($row);
+    })
+  }).fail(function(err) {
+    alert('Opencage geocode request failed.');
   });
 
 });

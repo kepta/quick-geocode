@@ -6,6 +6,7 @@
           integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
           crossorigin="anonymous"></script>
         <script src="mapzen.js"></script>
+        <script src="opencage.js"></script>
         <script src="index.js"></script>
         <title>All geocoders are magic and fairy dust</title>
     </head>
@@ -43,6 +44,45 @@ th {
 }
     </style>
     <body>
+        <div id="oc" class="container">
+            <h3>OpenCage Geocoder</h3>
+            <table id="ocResults">
+                <thead>
+                    <th>
+                        Confidence
+                    </th>
+                    <th>
+                        Type
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        OSM Link
+                    </th>
+                    <th>
+                        View on Map
+                    </th>
+                    <th>
+                        Lon
+                    </th>
+                    <th>
+                        Lat
+                    </th>
+                </thead>
+                <tbody>
+
+                </tbody>         
+            </table>
+            <div id="ocLoading">Loading results...</div>
+            <div class="attribution">Attribution: 
+                <a href="https://geocoder.opencagedata.com">Open Cage Data</a>, 
+                <a href="http://osm.org">OpenStreetmap contributors</a>
+            </div>
+        </div>
         <div id="mz" class="container">
             <h3>Mapzen Geocoder</h3>
             <table id="mzResults">
@@ -83,6 +123,7 @@ th {
                 <a href="http://geonames.org">Geonames</a>
             </div>
         </div>
+
     </body>
 
 </html>
