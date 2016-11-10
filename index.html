@@ -5,6 +5,7 @@
           src="//code.jquery.com/jquery-2.2.4.min.js"
           integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
           crossorigin="anonymous"></script>
+        <script src="mapzen.js"></script>
         <script src="index.js"></script>
         <title>All geocoders are magic and fairy dust</title>
     </head>
@@ -35,49 +36,52 @@ th {
     color: white;
 }
 
-#attribution {
+.attribution {
     font-style: italic;
     font-size: 12px;
     padding-top: 16px;
 }
     </style>
     <body>
-        <table id="results">
-            <thead>
-                <th>
-                    Source
-                </th>
-                <th>
-                    Confidence
-                </th>
-                <th>
-                    Accuracy
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Label
-                </th>
-                <th>
-                    Link
-                </th>
-                <th>
-                    Lon
-                </th>
-                <th>
-                    Lat
-                </th>
-            </thead>
-            <tbody>
+        <div id="mz" class="container">
+            <h3>Mapzen Geocoder</h3>
+            <table id="mzResults">
+                <thead>
+                    <th>
+                        Source
+                    </th>
+                    <th>
+                        Confidence
+                    </th>
+                    <th>
+                        Accuracy
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Label
+                    </th>
+                    <th>
+                        Link
+                    </th>
+                    <th>
+                        Lon
+                    </th>
+                    <th>
+                        Lat
+                    </th>
+                </thead>
+                <tbody>
 
-            </tbody>         
-        </table>
-        <div id="loading">Loading results...</div>
-        <div id="attribution">Attribution: 
-            <a href="https://mapzen.com/products/search/">Mapzen Geocoder</a>, 
-            <a href="http://osm.org">OpenStreetmap contributors</a>, 
-            <a href="http://geonames.org">Geonames</a>
+                </tbody>         
+            </table>
+            <div id="mzLoading">Loading results...</div>
+            <div class="attribution">Attribution: 
+                <a href="https://mapzen.com/products/search/">Mapzen Geocoder</a>, 
+                <a href="http://osm.org">OpenStreetmap contributors</a>, 
+                <a href="http://geonames.org">Geonames</a>
+            </div>
         </div>
     </body>
 
