@@ -84,13 +84,18 @@ var MapzenResult = function(data) {
 
 MapzenResult.prototype.getLink = function() {
   var source = this.source;
+  var link;
   if (source === 'openstreetmap') {
-    return getOSMLink(this.id);
+    link = getOSMLink(this.id);
   } else if (source === 'geonames') {
-    return getGeonamesLink(this.id);
+    link = getGeonamesLink(this.id);
   } else {
-    return '';
+    link = null;
   }
+  if (!link) {
+    link = 'http://www.openstreetmap.org/#map=19/' + this.lat + '/' + this.lon;
+  }
+  return link;
 };
 
 MapzenResult.prototype.getRow = function() {
@@ -111,7 +116,7 @@ function getOSMLink(id) {
   var idSplit = id.split(':');
   var type = idSplit[0];
   if (type === 'polyline') {
-    type = 'way';
+    return null;
   }
   var objId = idSplit[1];
   return 'http://openstreetmap.org/' + type + '/' + objId;
