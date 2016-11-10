@@ -110,6 +110,9 @@ MapzenResult.prototype.getRow = function() {
 function getOSMLink(id) {
   var idSplit = id.split(':');
   var type = idSplit[0];
+  if (type === 'polyline') {
+    type = 'way';
+  }
   var objId = idSplit[1];
   return 'http://openstreetmap.org/' + type + '/' + objId;
 }
