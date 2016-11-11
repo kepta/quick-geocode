@@ -29,6 +29,8 @@
                 .prop('href', this.mapLink)
                 .text('View on Map')
             ).appendTo($tr);
+        getWikiTd().appendTo($tr);
+        getGoogleTd().appendTo($tr);
         $('<td />').text(this.lon).appendTo($tr);
         $('<td />').text(this.lat).appendTo($tr);
         return $tr;

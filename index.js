@@ -94,4 +94,24 @@ function getQueryObj() {
   console.log('query obj', result);
   return result;
 }
-  
+
+//FIXME: This is super ugly. I know.
+function getGoogleTd() {
+  var query = getQueryObj();
+  var googleLink = 'http://google.com/#q=' + query.name + ', ' + query.city;
+  return $('<td />').append($('<a />')
+      .prop('target', '_blank')
+      .prop('href', googleLink)
+      .text('Search Google')
+    );
+}
+
+function getWikiTd() {
+  var query = getQueryObj();
+  var wikiLink = 'https://www.wikidata.org/w/index.php?title=Special:Search&profile=default&fulltext=Search&search=' + query.name + '&searchToken=3bto1uwdawuhrioq5mztmoknr';
+  return $('<td />').append($('<a />')
+      .prop('target', '_blank')
+      .prop('href', wikiLink)
+      .text('Search Wikidata')
+    );
+}
