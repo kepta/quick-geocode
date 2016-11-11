@@ -36,11 +36,16 @@
     getTd(this.name).appendTo($tr);
     getTd(this.label).appendTo($tr);
     getTdLink(this.getLink()).appendTo($tr);
+    getTdLink(this.getMap(), 'View on Map').appendTo($tr);
     getTd(this.lon).appendTo($tr);
     getTd(this.lat).appendTo($tr);
     return $tr;
 
   };
+
+  MapzenResult.prototype.getMap = function() {
+    return 'http://openstreetmap.org/#map=19/' + this.lat + '/' + this.lon;
+  }
 
   function getOSMLink(id) {
     var idSplit = id.split(':');
@@ -60,14 +65,17 @@
     return $('<td />').text(text);
   }
 
-  function getTdLink(url) {
+  function getTdLink(url, text) {
+    if (!text) {
+      text = 'Link';
+    }
     if (!url) {
       return $('<td />').text('No link');
     }
     var $a = $('<a />')
       .prop('target', '_blank')
       .prop('href', url)
-      .text('Link');
+      .text(text);
     return $('<td />').append($a);
   }
 
