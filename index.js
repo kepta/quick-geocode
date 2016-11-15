@@ -44,6 +44,8 @@ var citiesData = [
 {"city": "Los Angeles", "bbox_wsen": "-118.9668,33.5734,-117.4754,34.4250"}
 ,
 {"city": "Hanoi", "bbox_wsen": "105.65265919029923,20.890782347485796,106.1325432094186,21.127392892874553"}
+,
+{"city": "Kyoto", "bbox_wsen": "135.4664005014768,34.843407941908126,136.0470557631026,35.094723401265654"}
 ];
 
 var cities = citiesData.reduce(function(memo, val) {
