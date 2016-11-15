@@ -37,8 +37,6 @@
     getTd(this.label).appendTo($tr);
     getTdLink(this.getLink()).appendTo($tr);
     getTdLink(this.getMap(), 'View on Map').appendTo($tr);
-    getWikiTd().appendTo($tr);
-    getGoogleTd().appendTo($tr);
     getTd(this.lon).appendTo($tr);
     getTd(this.lat).appendTo($tr);
     return $tr;

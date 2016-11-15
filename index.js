@@ -63,6 +63,11 @@ $(function() {
     alert('bbox for ' + query.city + ' not found');
     return;
   };
+
+  $('#searchName').text(query.name);
+  $('#searchCity').text(query.city);
+  $('#searchGoogle').prop('href', getGoogleLink());
+  $('#searchWikidata').prop('href', getWikiLink());
   var bbox = cities[query.city];
 
   //FIXME: build params object, not this ugly url string concat
@@ -122,22 +127,12 @@ function getQueryObj() {
 }
 
 //FIXME: This is super ugly. I know.
-function getGoogleTd() {
+function getGoogleLink() {
   var query = getQueryObj();
-  var googleLink = 'http://google.com/#q=' + query.name + ', ' + query.city;
-  return $('<td />').append($('<a />')
-      .prop('target', '_blank')
-      .prop('href', googleLink)
-      .text('Search Google')
-    );
+  return 'http://google.com/#q=' + query.name + ', ' + query.city;
 }
 
-function getWikiTd() {
+function getWikiLink() {
   var query = getQueryObj();
-  var wikiLink = 'https://www.wikidata.org/w/index.php?title=Special:Search&profile=default&fulltext=Search&search=' + query.name + '&searchToken=3bto1uwdawuhrioq5mztmoknr';
-  return $('<td />').append($('<a />')
-      .prop('target', '_blank')
-      .prop('href', wikiLink)
-      .text('Search Wikidata')
-    );
+  return 'https://www.wikidata.org/w/index.php?title=Special:Search&profile=default&fulltext=Search&search=' + query.name + '&searchToken=3bto1uwdawuhrioq5mztmoknr';
 }
