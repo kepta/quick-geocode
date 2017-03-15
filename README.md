@@ -1,9 +1,21 @@
-This is a simple tool to use different geocoders ([Mapzen](https://mapzen.com/products/search/) and [Opencage](https://geocoder.opencagedata.com/), currently) to attempt to geocode places in [OpenStreetMap](http://osm.org).
 
-You can try it out at https://batpad.github.io/quick-geocode/ .
+Scrapes popular places in a city from wikipedia or google.
 
-The page requires two query parameters: a `name` and a `city`. `name` should be the string you are searching for and `city` will define the bounding box to use to narrow your search.
+Examples
 
-For a list of allowed city names: https://github.com/batpad/quick-geocode/blob/gh-pages/index.js#L7
+Wikipedia list format
+``` shell
+URL=https://en.wikipedia.org/wiki/List_of_tourist_attractions_in_Paris TAG=ul node scrape.js
+```
 
-An example query: https://batpad.github.io/quick-geocode/?name=Empire%20State&city=NYC
+Wikipedia table format
+``` shell
+URL=https://en.wikipedia.org/wiki/List_of_museums_in_Paris TAG=table node scrape.js
+```
+
+Google 
+``` shell
+GOOGLE=Paris node scrape.js
+```
+
+All the commands will output a txt file.
