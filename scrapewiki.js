@@ -29,6 +29,6 @@ function scraper(url, type) {
 
 scraper(process.env.URL, process.env.TAG).then(r => {
     var fileName = process.env.URL.split('/');
-    fileName = fileName[fileName.length - 1]
+    fileName = fileName[fileName.length - 1] + '.txt';
     fs.writeFileSync(fileName, r.join('\n'), 'utf8');
 });
