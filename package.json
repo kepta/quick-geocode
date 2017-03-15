@@ -1,0 +1,23 @@
+{
+  "name": "quick-geocode",
+  "version": "1.0.0",
+  "description": "This is a simple tool to use different geocoders ([Mapzen](https://mapzen.com/products/search/) and [Opencage](https://geocoder.opencagedata.com/), currently) to attempt to geocode places in [OpenStreetMap](http://osm.org).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kepta/quick-geocode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kepta/quick-geocode/issues"
+  },
+  "homepage": "https://github.com/kepta/quick-geocode#readme",
+  "dependencies": {
+    "fast-levenshtein": "^2.0.6",
+    "node-fetch": "^1.6.3"
+  }
+}
