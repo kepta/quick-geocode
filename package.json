@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/kepta/quick-geocode#readme",
   "dependencies": {
+    "cheerio": "^0.22.0",
     "fast-levenshtein": "^2.0.6",
+    "linkscrape": "^1.0.0",
     "node-fetch": "^1.6.3"
   }
 }
