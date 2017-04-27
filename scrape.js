@@ -4,7 +4,6 @@ var fs = require('fs');
 
 const googleURL = (city) => `https://www.google.co.in/search?q=most+popular+places+in+${city}&oq=most+popular+places+in+${city}&ie=UTF-8`;
 
-
 function scraper(url, type) {
     return fetch(url)
     .then(r => r.text())
@@ -31,7 +30,7 @@ function scraper(url, type) {
     .catch(console.error);
 }
 
-function googleScrapper(url, className) {
+function googleScrapper(url) {
     return fetch(url)
         .then(r => r.text())
         .then(res => {
@@ -46,22 +45,24 @@ function googleScrapper(url, className) {
         });
 }
 
-if (process.env.GOOGLE) {
-    const url = googleURL(process.env.GOOGLE);
-    const className = process.env.CLASS;
-    googleScrapper(url, className).then(r => {
-        var fileName = 'google-' + process.env.GOOGLE + '.txt';
-        writeToFile(fileName, r);
-    });
-} else {
-    scraper(process.env.URL, process.env.TAG).then(r => {
-        var fileName = process.env.URL.split('/');
-        fileName = fileName[fileName.length - 1] + '.txt';
-        writeToFile(fileName, r);
-    });
-}
+// if (process.env.GOOGLE) {
+//     const url = googleURL(process.env.GOOGLE);
+//     const className = process.env.CLASS;
+//     googleScrapper(url, className).then(r => {
+//         var fileName = 'google-' + process.env.GOOGLE + '.txt';
+//         writeToFile(fileName, r);
+//     });
+// } else {
+//     scraper(process.env.URL, process.env.TAG).then(r => {
+//         var fileName = process.env.URL.split('/');
+//         fileName = fileName[fileName.length - 1] + '.txt';
+//         writeToFile(fileName, r);
+//     });
+// }
 
 
 function writeToFile(fileName, data) {
     fs.writeFileSync(fileName, data.join('\n'), 'utf8');
 }
+
+module.exports = googleScrapper;
